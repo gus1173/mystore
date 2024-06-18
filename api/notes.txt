@@ -1,0 +1,61 @@
+-activate python shell
+python manage.py shell
+
+-importing rows
+from api.models import modelname
+modelname.objects.create(field1=value,field2=value)
+
+-get all datas
+qs = modelname.objects.all()
+
+-filter query
+qs = modelname.objects.filter(field1=value)
+qs = modelname.objects.exclude(field1=value)
+
+-get one item
+qs = modelname.objects.get(id=value)
+
+-update
+qs = modelname.objects.filter(id=value).update(field=value)
+
+-greater or less than
+qs = modelname.objects.filter(field1__gt=value)
+qs = modelname.objects.filter(field1__gte=value)
+qs = modelname.objects.filter(field1__lt=value)
+qs = modelname.objects.filter(field1__lte=value)
+qs = modelname.objects.filter(field1__lt=value,field1__gt=value)
+
+-values list
+qs = modelname.objects.values_list(field1=value)
+qs = modelname.objects.values_list(field1=value).distinct()
+qs = modelname.objects.values_list(field1=value,flat=True)
+qs = modelname.objects.filter(field1=value).values_list(field1=value,flat=True)
+
+-delete
+qs = modelname.objects.filter(id=value).delete()
+
+-add foreign keys
+qs = users.object.get(id=3)
+item = users.object.get(user=qs)
+carts.objects.create(user=qs,products=item)
+
+item.carts_set.create(user=qs)
+
+
+item=carts.objects.filter(id=3)
+item.carts_set.all()
+
+-token authentification 
+class token(models.model)
+    id 
+    token
+    user
+class obtaintoken(APIView):
+    def post(self...):
+        user
+        pass
+        token
+        return response(token)
+urlpatterns=[
+    path("token")......
+]    
